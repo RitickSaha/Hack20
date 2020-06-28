@@ -31,6 +31,9 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   Scene _scene;
   Object _earth;
+  bool checker1=true,checker2=false,checker3=false,checker4=false;
+  Color ckred=Colors.red;
+  Color ckgreen=Colors.green;
   bool add = true;
   double x = 0, y = 0, z = 0;
   Alignment _end = Alignment.centerLeft, _begin = Alignment.centerRight;
@@ -88,194 +91,337 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     Timer(Duration(seconds: 1), () => changes());
     return Scaffold(
-          backgroundColor: Colors.black,
-          body: Stack(
-            children: <Widget>[
-              ShaderMask(
-                shaderCallback: (Rect bounds) {
-                  return LinearGradient(
-                    begin: _begin,
-                    end: _end,
-                    colors: [Colors.redAccent, Colors.transparent],
-                    stops: [0.5,0.9],
-                  ).createShader(bounds);
-                },
-                blendMode: BlendMode.dstIn,
-              child: Image.asset("assets/Mask.png"),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                height: 50,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.transparent, Colors.white30],
-                    stops: [0.5,0.9],
+      backgroundColor: Colors.black,
+      body: Stack(
+        children: <Widget>[
+          ShaderMask(
+            shaderCallback: (Rect bounds) {
+              return LinearGradient(
+                begin: _begin,
+                end: _end,
+                colors: [Colors.redAccent, Colors.transparent],
+                stops: [0.5, 0.9],
+              ).createShader(bounds);
+            },
+            blendMode: BlendMode.dstIn,
+            child: Image.asset("assets/Mask.png"),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 40, 0, 0),
+            height: 50,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.transparent, Colors.white30],
+                  stops: [0.5, 0.9],
+                ),
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white70,
+                    blurRadius: 200.0,
+                    spreadRadius: -12,
+                    offset: Offset(
+                      0.0,
+                      3.0,
+                    ),
                   ),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white70,
-                        blurRadius: 200.0,
-                        spreadRadius:-12,
-                        offset: Offset(
-                          0.0,
-                          3.0,
-                        ),
-                      ),
-                    ]
-                ),
-                child: Text("Planetary Saviors",
-                  style: TextStyle(fontFamily: "Pacifico",fontSize: 30.0),
-                  textAlign: TextAlign.center,
-                ),),
-              AnimatedContainer(
-                duration: Duration(seconds: 3),
-                transform: Matrix4.translationValues(x, y, z),
-                child: ShaderMask(
-                  shaderCallback: (Rect bounds) {
-                    return LinearGradient(
-                      begin: _begin,
-                      end: _end,
-                      colors: [Colors.redAccent, Colors.transparent],
-                      stops: [0, 0.6],
-                    ).createShader(bounds);
-                  },
-                  blendMode: BlendMode.dstIn,
-                  child: Cube(onSceneCreated: _onSceneCreated),
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xFFe61c4e).withAlpha(20),
-                        blurRadius: 200.0,
-                        spreadRadius: 0.0,
-                        offset: Offset(
-                          0.0,
-                          3.0,
-                        ),
-                      ),
-                    ]),
-              ),
-              Positioned(
-                right: 50,
-                bottom: 20,
-                child: GestureDetector(
-                    onTap: ,
-                    child: Stack(
+                ]),
+            child: Text(
+              "Planetary Saviors",
+              style: TextStyle(fontFamily: "Pacifico", fontSize: 30.0),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          AnimatedContainer(
+            duration: Duration(seconds: 3),
+            transform: Matrix4.translationValues(x, y, z),
+            child: ShaderMask(
+              shaderCallback: (Rect bounds) {
+                return LinearGradient(
+                  begin: _begin,
+                  end: _end,
+                  colors: [Colors.redAccent, Colors.transparent],
+                  stops: [0, 0.6],
+                ).createShader(bounds);
+              },
+              blendMode: BlendMode.dstIn,
+              child: Cube(onSceneCreated: _onSceneCreated),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xFFe61c4e).withAlpha(20),
+                    blurRadius: 200.0,
+                    spreadRadius: 0.0,
+                    offset: Offset(
+                      0.0,
+                      3.0,
+                    ),
+                  ),
+                ]),
+          ),
+          Positioned(
+              right: 50,
+              bottom: 20,
+              child: GestureDetector(
+                child: Stack(
                   children: <Widget>[
                     SvgPicture.asset(
                       'assets/a.svg',
-                      height:65,
+                      height: 65,
                     ),
                     Positioned(
                       top: 15,
-                      left:30,
-                      child: Text("See Your Earth",style: TextStyle(
-                          fontSize: 18
-                      ),),
+                      left: 30,
+                      child: Text(
+                        "See Your Earth",
+                        style: TextStyle(fontSize: 18),
+                      ),
                     ),
                     Positioned(
                       top: 45,
                       left: 20,
-                      child: Text("Green Is the new Black!",style: TextStyle(
-                          fontSize: 12
-                      ),),
+                      child: Text(
+                        "Green Is the new Black!",
+                        style: TextStyle(fontSize: 12),
+                      ),
                     )
                   ],
-                ),,)
-              ),
-              Positioned(
+                ),
+              )),
+          Positioned(
+              top: 250,
+              child: GestureDetector(
                 child: Stack(
                   children: <Widget>[
-                    Positioned(
-                      bottom: -60,
-                      left: -60,
-                      child: Opacity(
-                          opacity: add ? 0.0 : 1.0,
-                          child: GestureDetector(
-                            child: Container(
-                              height: 200,
-                              width: 200,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: RadialGradient(
-                                  colors: <Color>[
-                                    Colors.black,
-                                    Color(0xFF990033),
-                                  ],
-                                ),
-                              ),
-                              child: Stack(children: [
-                                Positioned(
-                                    right: 95,
-                                    top: 20,
-                                    child: GestureDetector(
-                                      child: Container(
-                                        child: Icon(Icons.home, size: 35),
-                                      ),
-                                    )),
-
-                                Positioned(
-                                    right: 35,
-                                    top: 45,
-                                    child: GestureDetector(
-                                      child: Container(
-                                        child: Icon(Icons.view_module, size: 35),
-                                      ),
-                                    )),
-                                Positioned(
-                                    right: 20,
-                                    top: 100,
-                                    child: GestureDetector(
-                                      child: Container(
-                                        child: Icon(Icons.history, size: 35),
-                                      ),
-                                    )),
-                              ]),
-                            ),
-                          )),
+                    Image.asset(
+                      "assets/Group 6.png",
+                      scale: 0.8,
                     ),
                     Positioned(
-                      bottom: 0,
-                      child: GestureDetector(
-                          child: Container(
-                              height: 60,
-                              width: 60,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: RadialGradient(
-                                  colors: <Color>[
-                                    Colors.black,
-                                    Color(0xFF990033),
-                                  ],
+                      top: 75,
+                      left: 75,
+                      child: Text(
+                        "Daily Tasks",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: 'RadioSpaceBold',
+                            color: Colors.white24),
+                      ),
+                    ),
+                    Positioned(
+                      top: 70,
+                      left: 80,
+                      child: Text(
+                        "Daily Tasks",
+                        style: TextStyle(
+                            fontSize: 30, fontFamily: 'RadioSpaceBold'),
+                      ),
+                    ),
+                    Positioned(
+                      top: 120,
+                      left: 65,
+                      child: Container(
+                            height: 35,
+                            width: 300,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  bottom: 10,
+                                  left: 35,
+                                  child: Text(
+                                    "Travel Via Car pool for 2 days",
+                                    style: TextStyle(fontSize: 16),
+                                  ),
                                 ),
+                                Positioned(
+                                  bottom: 0,
+                                  left: 35,
+                                  child: GestureDetector(
+                                      child: Container(
+                                          height: 60,
+                                          width: 60,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            gradient: checker1 ? new RadialGradient(
+                                              colors: <Color>[Colors.black, Colors.green],
+                                            ): new RadialGradient(
+                                              colors: <Color>[Colors.black, Colors.red],
+                                            ),
+                                          ),
+                                          child: Positioned(
+                                            child: Center(
+                                                child: Icon(!add ? Icons.done : Icons.close)),
+                                          )),
+                                      onTap: () => {
+                                        setState(() {
+                                          if (add) {
+                                            add = false;
+                                          } else {
+                                            add = true;
+                                          }
+                                        })
+                                      }),
+                                ),
+                        ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.topRight,
+                              colors: [Colors.redAccent, Colors.transparent],
+                              stops: [0.8, 1],
+                            ).createShader(bounds);
+                          },
+                          blendMode: BlendMode.dstIn,
+                          child:
+                          Positioned(
+                                  top: 5,
+                                  left: 5,
+                                  child: Image.asset(
+                                    "assets/Path 14.png",
+                                    scale: 0.8,
+                                  ),
+                                ),
+                        ),
+                              ],
+                            ),
+                          )),
+                    Positioned(
+                      top: 310,
+                      left: 85,
+                      child: Text(
+                        "Your progress",
+                        style: TextStyle(
+                            fontSize: 26, fontFamily: 'RadioSpaceBold'),
+                      ),
+                    ),
+                    Positioned(
+                      top: 350,
+                      left: 88,
+                      child: ShaderMask(
+                        shaderCallback: (Rect bounds) {
+                          return LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.topRight,
+                            colors: [Colors.redAccent, Colors.transparent],
+                            stops: [0, 0.5],
+                          ).createShader(bounds);
+                        },
+                        blendMode: BlendMode.dstIn,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              top: 2,
+                              left: 5,
+                              child: Image.asset(
+                                "assets/Path 12.png",
+                                scale: 0.8,
                               ),
-                              child: Positioned(
-                                child: Center(
-                                    child:
-                                        Icon(!add ? Icons.close : Icons.add)),
-                              )),
-                          onTap: () => {
-                                setState(() {
-                                  if (add) {
-                                    add = false;
-                                  } else {
-                                    add = true;
-                                  }
-                                })
-                              }),
+                            ),
+                            Positioned(
+                              child: Image.asset(
+                                "assets/Path 13.png",
+                                scale: 0.8,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
-              ),
-            ],
+              )),
+          Positioned(
+            child: Stack(
+              children: <Widget>[
+                Positioned(
+                  bottom: -40,
+                  left: -40,
+                  child: Opacity(
+                      opacity: add ? 0.0 : 1.0,
+                      child: GestureDetector(
+                        child: Container(
+                          height: 200,
+                          width: 200,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: RadialGradient(
+                              colors: <Color>[
+                                Colors.black,
+                                Color(0xFF990033),
+                              ],
+                            ),
+                          ),
+                          child: Stack(children: [
+                            Positioned(
+                                right: 95,
+                                top: 20,
+                                child: GestureDetector(
+                                  child: Container(
+                                    child: Icon(Icons.home, size: 35),
+                                  ),
+                                )),
+                            Positioned(
+                                right: 35,
+                                top: 45,
+                                child: GestureDetector(
+                                  child: Container(
+                                    child: Icon(Icons.view_module, size: 35),
+                                  ),
+                                )),
+                            Positioned(
+                                right: 20,
+                                top: 100,
+                                child: GestureDetector(
+                                  child: Container(
+                                    child: Icon(Icons.history, size: 35),
+                                  ),
+                                )),
+                          ]),
+                        ),
+                      )),
+                ),
+                Positioned(
+                  bottom: 10,
+                  left: 10,
+                  child: GestureDetector(
+                      child: Container(
+                          height: 60,
+                          width: 60,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: RadialGradient(
+                              colors: <Color>[
+                                Colors.black,
+                                Color(0xFF990033),
+                              ],
+                            ),
+                          ),
+                          child: Positioned(
+                            child: Center(
+                                child: Icon(!add ? Icons.close : Icons.add)),
+                          )),
+                      onTap: () => {
+                            setState(() {
+                              if (add) {
+                                add = false;
+                              } else {
+                                add = true;
+                              }
+                            })
+                          }),
+                ),
+              ],
+            ),
           ),
+        ],
+      ),
     );
   }
 }

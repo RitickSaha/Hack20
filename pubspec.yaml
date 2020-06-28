@@ -53,6 +53,10 @@ flutter:
       fonts:
         - asset: assets/fonts/Pacifico-Regular.ttf
           weight: 400
+    - family: RadioSpaceBold
+      fonts:
+        - asset: assets/fonts/RadioSpaceBold-nPR1.otf
+          weight: 400
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
