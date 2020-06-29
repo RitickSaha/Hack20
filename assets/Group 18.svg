@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="334.28" height="124.988" viewBox="0 0 334.28 124.988">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="1.039" gradientTransform="matrix(1, 0, 0, 2.747, 0, -0.873)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#07ffa2" stop-opacity="0.251"/>
+    </radialGradient>
+  </defs>
+  <g id="Group_18" data-name="Group 18" transform="translate(-72.594 -82.603)">
+    <g id="Group_17" data-name="Group 17">
+      <path id="Union_14" data-name="Union 14" d="M255,104H127l-7.817-7.817H102.632L89,82.551V10.3L119.187-19.89s33.262-.247,33.51,0L174.024,1.437H337.256L358.583-19.89c.247-.247,33.51,0,33.51,0L422.28,10.3V82.551L408.648,96.184H392.093L384.276,104Z" transform="translate(-15.906 103.089)" stroke="#07ffa2" stroke-width="1" fill="url(#radial-gradient)"/>
+      <g id="Rectangle_12" data-name="Rectangle 12" transform="translate(191 101)" fill="#07ffa2" stroke="#07ffa2" stroke-width="1">
+        <rect width="92" height="7" rx="3.5" stroke="none"/>
+        <rect x="0.5" y="0.5" width="91" height="6" rx="3" fill="none"/>
+      </g>
+      <path id="Path_249" data-name="Path 249" d="M-15.906,171.007l1.587,5.444v30.888" transform="translate(89 -20)" fill="none" stroke="#07ffa2" stroke-width="1"/>
+      <path id="Path_250" data-name="Path 250" d="M12.9,105.326l2.079,2.079H46.272l3.141-3.141" transform="translate(89 -20)" fill="none" stroke="#07ffa2" stroke-width="1"/>
+      <path id="Path_251" data-name="Path 251" d="M-6.746,123.906l1.425,1.425-9.933,9.933" transform="translate(89 -20)" fill="none" stroke="#07ffa2" stroke-width="1"/>
+      <path id="Path_252" data-name="Path 252" d="M180.474,128l3.368,3.368h50.242l23.857-23.857h15.907l4.431-4.431" transform="translate(89 -20)" fill="none" stroke="#07ffa2" stroke-width="1"/>
+      <path id="Path_253" data-name="Path 253" d="M-2.494,217.935l-1.7,2.735H10.951l-1.7-2.735Z" transform="translate(92 -22)" fill="none" stroke="#07ffa2" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

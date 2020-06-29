@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="392.531" height="275.213" viewBox="0 0 392.531 275.213">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#7ff7fe" stop-opacity="0.251"/>
+      <stop offset="0.142" stop-color="#58acb6" stop-opacity="0.31"/>
+      <stop offset="0.28" stop-color="#22c1de" stop-opacity="0.141"/>
+      <stop offset="0.519" stop-color="#1f414d" stop-opacity="0.388"/>
+      <stop offset="0.853" stop-color="#145874" stop-opacity="0.616"/>
+      <stop offset="1" stop-color="#027fb5" stop-opacity="0.431"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <path id="Union_1" data-name="Union 1" d="M332.451,0V45.523h60.081V0ZM0,0V45.523H60.082V0ZM332.451,137.327V182.85h60.081V137.327ZM0,137.327V182.85H60.082V137.327Z" transform="translate(0 0)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Group_12" data-name="Group 12" transform="translate(-23.468 -515.776)">
+    <g id="Rectangle_3" data-name="Rectangle 3" transform="translate(31.814 599.234)" stroke="#1e4655" stroke-width="3" opacity="0.71" fill="url(#linear-gradient)">
+      <rect width="372.805" height="169.193" rx="31" stroke="none"/>
+      <rect x="1.5" y="1.5" width="369.805" height="166.193" rx="29.5" fill="none"/>
+    </g>
+    <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(23.468 593.164)" clip-path="url(#clip-path)">
+      <g id="Rectangle_4" data-name="Rectangle 4" transform="translate(11.015 6.07)" fill="none" stroke="#00b9ff" stroke-width="5" opacity="0.71">
+        <rect width="366.497" height="169.193" rx="31" stroke="none"/>
+        <rect x="2.5" y="2.5" width="361.497" height="164.193" rx="28.5" fill="none"/>
+      </g>
+    </g>
+    <path id="Path_103" data-name="Path 103" d="M10.282,566.344l13.362,13.362H239.112l11.262-11.262V391.687l-11.262-11.262V315.41" transform="translate(162.386 204.343)" fill="none" stroke="red" stroke-width="2"/>
+    <circle id="Ellipse_5" data-name="Ellipse 5" cx="5.69" cy="5.69" r="5.69" transform="translate(396.273 515.776)" fill="#d61e1e"/>
+    <path id="Path_104" data-name="Path 104" d="M40.355,799.962,46.8,806.4h81.013l12.85-12.85H232.04l6.409,6.409Z" transform="translate(158.164 -15.913)" fill="red" stroke="red" stroke-width="1" opacity="0.44"/>
+  </g>
+</svg>

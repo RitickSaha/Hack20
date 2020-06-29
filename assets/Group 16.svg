@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="425" height="143.227" viewBox="0 0 425 143.227">
+  <defs>
+    <linearGradient id="linear-gradient" x2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0" stop-color="#d3d3d3" stop-opacity="0.651"/>
+      <stop offset="1" stop-color="gray" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_16" transform="translate(-6 -374.242)">
+    <g id="Group_15" transform="translate(-29 -3)">
+      <path id="Path_233" d="M964,402h30.736l8.392,8.392H1038" transform="translate(-923 4)" fill="none" stroke="#fff" stroke-width="4"/>
+      <circle id="Ellipse_6" cx="6.5" cy="6.5" r="6.5" transform="translate(35 400)" fill="#fff"/>
+      <rect id="Rectangle_11" width="345" height="56" transform="translate(115 385)" fill="url(#linear-gradient)"/>
+      <path id="Path_237" d="M1055.708,387.242h-20.658v17.927" transform="translate(-926 -8)" fill="none" stroke="#fff" stroke-width="4"/>
+      <path id="Path_238" d="M1055.708,405.169h-20.658V387.242" transform="translate(-926 43)" fill="none" stroke="#fff" stroke-width="4"/>
+      <path id="Path_239" d="M1045.835,396.206v10" transform="translate(-923 -4)" fill="none" stroke="#fff" stroke-width="4"/>
+      <path id="Path_241" d="M1045.835,396.206v42.316" transform="translate(-916 -4)" fill="none" stroke="#fff" stroke-width="4"/>
+      <path id="Path_240" d="M1045.835,396.206v11" transform="translate(-923 27.315)" fill="none" stroke="#fff" stroke-width="4"/>
+    </g>
+    <path id="Union_13" d="M-848.129,1.816H-886.6L-888.43.648H-876.5l4.867-2.912h39.157l4.868,2.912h11.927l-1.833,1.168Zm21.334-3.047-5.161-3.185h-40.2l-5.161,3.185h-20.3l-3.816-3.013h-15.736L-923-6h141.889l-5.837,1.756h-15.736L-806.5-1.231Z" transform="translate(1104.989 515.653)" fill="#fff"/>
+    <circle id="Ellipse_7" cx="5.5" cy="5.5" r="5.5" transform="translate(118 451)" fill="#fff"/>
+    <path id="Path_246" d="M123.5,451.5v26.856l13.94,13.94h24.207" fill="none" stroke="#fff" stroke-width="2"/>
+  </g>
+</svg>

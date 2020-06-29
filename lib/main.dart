@@ -5,7 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cube/flutter_cube.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:flutterappearth/screens/carousel.dart';
+import 'package:flutterappearth/screens/home_page.dart';
+import 'package:flutterappearth/screens/tree_count.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Planet',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: MyHomePage(title: 'Planet'),
     );
@@ -31,9 +34,11 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   Scene _scene;
   Object _earth;
-  bool checker1=true,checker2=false,checker3=false,checker4=false;
-  Color ckred=Colors.red;
-  Color ckgreen=Colors.green;
+  bool checker1 = false, checker2 = false, checker3 = false, checker4 = false;
+  Color ckred = Colors.red;
+  double progress = 0;
+  double progress2 = 0;
+  Color ckgreen = Colors.green;
   bool add = true;
   double x = 0, y = 0, z = 0;
   Alignment _end = Alignment.centerLeft, _begin = Alignment.centerRight;
@@ -166,10 +171,21 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                 ]),
           ),
+          Container(
+            margin: EdgeInsets.only(top: 170),
+              height: 250,
+              child: Carousel()
+          ),
           Positioned(
               right: 50,
               bottom: 20,
               child: GestureDetector(
+                onTap: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FourthRoute()),
+                  )
+                },
                 child: Stack(
                   children: <Widget>[
                     SvgPicture.asset(
@@ -196,7 +212,7 @@ class _MyHomePageState extends State<MyHomePage>
                 ),
               )),
           Positioned(
-              top: 250,
+              bottom: 100,
               child: GestureDetector(
                 child: Stack(
                   children: <Widget>[
@@ -225,73 +241,250 @@ class _MyHomePageState extends State<MyHomePage>
                       ),
                     ),
                     Positioned(
-                      top: 120,
-                      left: 65,
-                      child: Container(
-                            height: 35,
-                            width: 300,
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  bottom: 10,
-                                  left: 35,
-                                  child: Text(
-                                    "Travel Via Car pool for 2 days",
-                                    style: TextStyle(fontSize: 16),
-                                  ),
+                        top: 110,
+                        left: 65,
+                        child: Container(
+                          height: 60,
+                          width: 300,
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                bottom: 20,
+                                left: 35,
+                                child: Text(
+                                  "Travel Via Car pool for 2 days",
+                                  style: TextStyle(fontSize: 16),
                                 ),
-                                Positioned(
-                                  bottom: 0,
-                                  left: 35,
-                                  child: GestureDetector(
-                                      child: Container(
-                                          height: 60,
-                                          width: 60,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            gradient: checker1 ? new RadialGradient(
-                                              colors: <Color>[Colors.black, Colors.green],
-                                            ): new RadialGradient(
-                                              colors: <Color>[Colors.black, Colors.red],
-                                            ),
-                                          ),
-                                          child: Positioned(
-                                            child: Center(
-                                                child: Icon(!add ? Icons.done : Icons.close)),
-                                          )),
-                                      onTap: () => {
-                                        setState(() {
-                                          if (add) {
-                                            add = false;
-                                          } else {
-                                            add = true;
-                                          }
-                                        })
-                                      }),
-                                ),
-                        ShaderMask(
-                          shaderCallback: (Rect bounds) {
-                            return LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.topRight,
-                              colors: [Colors.redAccent, Colors.transparent],
-                              stops: [0.8, 1],
-                            ).createShader(bounds);
-                          },
-                          blendMode: BlendMode.dstIn,
-                          child:
-                          Positioned(
-                                  top: 5,
-                                  left: 5,
+                              ),
+                              Positioned(
+                                top: 5,
+                                left: 5,
+                                child: ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.topRight,
+                                      colors: [
+                                        Colors.redAccent,
+                                        Colors.transparent
+                                      ],
+                                      stops: [0.8, 1],
+                                    ).createShader(bounds);
+                                  },
+                                  blendMode: BlendMode.dstIn,
                                   child: Image.asset(
                                     "assets/Path 14.png",
                                     scale: 0.8,
                                   ),
                                 ),
-                        ),
-                              ],
-                            ),
-                          )),
+                              ),
+                              Positioned(
+                                bottom: 20,
+                                right: 0,
+                                child: GestureDetector(
+                                    child: Container(
+                                        height: 30,
+                                        width: 30,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          gradient: RadialGradient(
+                                            colors: <Color>[
+                                              Colors.black,
+                                              checker1 ? ckgreen : Colors.red
+                                            ],
+                                          ),
+                                        ),
+                                        child: Center(
+                                            child: Icon(checker1
+                                                ? Icons.done
+                                                : Icons.query_builder))),
+                                    onTap: () => {
+                                          debugPrint("test ok"),
+                                          setState(() {
+                                            if (checker1) {
+                                              debugPrint("test true $progress");
+                                              progress = progress - 0.3;
+                                              if (progress < 0.2) {
+                                                progress = 0;
+                                              }
+                                              checker1 = false;
+                                            } else {
+                                              progress = progress + 0.3;
+                                              if (progress > 0.7) {
+                                                progress = 1;
+                                              }
+                                              debugPrint("test true $progress");
+                                              checker1 = true;
+                                            }
+                                          })
+                                        }),
+                              ),
+                            ],
+                          ),
+                        )),
+                    Positioned(
+                        top: 160,
+                        left: 65,
+                        child: Container(
+                          height: 60,
+                          width: 300,
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                bottom: 20,
+                                left: 35,
+                                child: Text(
+                                  "Plant 1 tree nearby!",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                              Positioned(
+                                top: 5,
+                                left: 5,
+                                child: ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.topRight,
+                                      colors: [
+                                        Colors.redAccent,
+                                        Colors.transparent
+                                      ],
+                                      stops: [0.8, 1],
+                                    ).createShader(bounds);
+                                  },
+                                  blendMode: BlendMode.dstIn,
+                                  child: Image.asset(
+                                    "assets/Path 14.png",
+                                    scale: 0.8,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 20,
+                                right: 0,
+                                child: GestureDetector(
+                                    child: Container(
+                                        height: 30,
+                                        width: 30,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          gradient: RadialGradient(
+                                            colors: <Color>[
+                                              Colors.black,
+                                              checker2 ? ckgreen : Colors.red
+                                            ],
+                                          ),
+                                        ),
+                                        child: Center(
+                                            child: Icon(checker2
+                                                ? Icons.done
+                                                : Icons.query_builder))),
+                                    onTap: () => {
+                                          debugPrint("test ok"),
+                                          setState(() {
+                                            if (checker2) {
+                                              debugPrint("test true $progress");
+                                              progress = progress - 0.3;
+                                              if (progress < 0.2) {
+                                                progress = 0;
+                                              }
+                                              checker2 = false;
+                                            } else {
+                                              progress = progress + 0.3;
+                                              if (progress > 0.7) {
+                                                progress = 1;
+                                              }
+                                              debugPrint("test true $progress");
+                                              checker2 = true;
+                                            }
+                                          })
+                                        }),
+                              ),
+                            ],
+                          ),
+                        )),
+                    Positioned(
+                        top: 210,
+                        left: 65,
+                        child: Container(
+                          height: 60,
+                          width: 300,
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                bottom: 20,
+                                left: 35,
+                                child: Text(
+                                  "Use E-pay to shop",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                              Positioned(
+                                top: 5,
+                                left: 5,
+                                child: ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.topRight,
+                                      colors: [
+                                        Colors.redAccent,
+                                        Colors.transparent
+                                      ],
+                                      stops: [0.8, 1],
+                                    ).createShader(bounds);
+                                  },
+                                  blendMode: BlendMode.dstIn,
+                                  child: Image.asset(
+                                    "assets/Path 14.png",
+                                    scale: 0.8,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 20,
+                                right: 0,
+                                child: GestureDetector(
+                                    child: Container(
+                                        height: 30,
+                                        width: 30,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          gradient: RadialGradient(
+                                            colors: <Color>[
+                                              Colors.black,
+                                              checker3 ? ckgreen : Colors.red
+                                            ],
+                                          ),
+                                        ),
+                                        child: Center(
+                                            child: Icon(checker3
+                                                ? Icons.done
+                                                : Icons.query_builder))),
+                                    onTap: () => {
+                                          setState(() {
+                                            if (checker3) {
+                                              progress = progress - 0.3;
+                                              if (progress < 0.2) {
+                                                progress = 0;
+                                              }
+                                              checker3 = false;
+                                              debugPrint("test true $progress");
+                                            } else {
+                                              debugPrint("test true $progress");
+                                              progress = progress + 0.3;
+                                              if (progress > 0.7) {
+                                                progress = 1;
+                                              }
+                                              checker3 = true;
+                                            }
+                                          })
+                                        }),
+                              ),
+                            ],
+                          ),
+                        )),
                     Positioned(
                       top: 310,
                       left: 85,
@@ -310,7 +503,7 @@ class _MyHomePageState extends State<MyHomePage>
                             begin: Alignment.topLeft,
                             end: Alignment.topRight,
                             colors: [Colors.redAccent, Colors.transparent],
-                            stops: [0, 0.5],
+                            stops: [progress != 1 ? 0 : 1, progress],
                           ).createShader(bounds);
                         },
                         blendMode: BlendMode.dstIn,
@@ -371,14 +564,28 @@ class _MyHomePageState extends State<MyHomePage>
                                 right: 35,
                                 top: 45,
                                 child: GestureDetector(
+                                  onTap: () => {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => TreeCount()),
+                                    )
+                                  },
                                   child: Container(
-                                    child: Icon(Icons.view_module, size: 35),
+                                    child: Icon(Icons.beach_access, size: 35),
                                   ),
                                 )),
                             Positioned(
                                 right: 20,
                                 top: 100,
                                 child: GestureDetector(
+                                  onTap: () => {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => ThirdRoute()),
+                                    ),
+                                  },
                                   child: Container(
                                     child: Icon(Icons.history, size: 35),
                                   ),
@@ -403,10 +610,7 @@ class _MyHomePageState extends State<MyHomePage>
                               ],
                             ),
                           ),
-                          child: Positioned(
-                            child: Center(
-                                child: Icon(!add ? Icons.close : Icons.add)),
-                          )),
+                          child: Icon(!add ? Icons.close : Icons.add)),
                       onTap: () => {
                             setState(() {
                               if (add) {
@@ -420,6 +624,132 @@ class _MyHomePageState extends State<MyHomePage>
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+class ThirdRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: MyPage2(),
+      ),
+    );
+  }
+}
+
+class FourthRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Scene _scene;
+    Object _earth;
+    double x = 0, y = 0, z = 0;
+    Alignment _end = Alignment.centerLeft, _begin = Alignment.centerRight;
+
+    void generateSphereObject(Object parent, String name, double radius,
+        bool backfaceCulling, String texturePath) async {
+      final Mesh mesh =
+          await generateSphereMesh(radius: radius, texturePath: texturePath);
+      parent.add(
+          Object(name: name, mesh: mesh, backfaceCulling: backfaceCulling));
+      _scene.updateTexture();
+    }
+
+    void _onSceneCreated(Scene scene) {
+      _scene = scene;
+      _scene.camera.position.z = 16;
+      _earth = Object(name: 'earth', scale: Vector3(10.0, 10.0, 10.0));
+      generateSphereObject(
+          _earth, 'surface', 0.485, true, 'assets/4096_earth.jpg');
+      _scene.world.add(_earth);
+    }
+
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Stack(
+        children: <Widget>[
+          ShaderMask(
+            shaderCallback: (Rect bounds) {
+              return LinearGradient(
+                begin: _begin,
+                end: _end,
+                colors: [Colors.redAccent, Colors.transparent],
+                stops: [0.5, 0.9],
+              ).createShader(bounds);
+            },
+            blendMode: BlendMode.dstIn,
+            child: Image.asset("assets/Mask.png"),
+          ),
+
+          AnimatedContainer(
+            duration: Duration(seconds: 3),
+            transform: Matrix4.translationValues(x, y, z),
+            child: Cube(onSceneCreated: _onSceneCreated),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 40, 0, 0),
+            height: 50,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.transparent, Colors.white30],
+                  stops: [0.5, 0.9],
+                ),
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white70,
+                    blurRadius: 200.0,
+                    spreadRadius: -12,
+                    offset: Offset(
+                      0.0,
+                      3.0,
+                    ),
+                  ),
+                ]),
+            child: Text(
+              "Planetary Saviors",
+              style: TextStyle(fontFamily: "Pacifico", fontSize: 30.0),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Positioned(
+            bottom: 30,
+            child: Container(
+              child: Stack(
+                children: [
+                  SvgPicture.asset(
+                    'assets/Group 12.svg',
+                  ),
+                  Positioned(
+                      top: 100,
+                      left: 40,
+                      child: Text(
+                        "Top 5 Saviors of the era:",
+                        style: TextStyle(
+                            fontFamily: 'RadioSpaceBold',
+                            fontSize: 25,
+                            color: Colors.amber),
+                      )),
+                  Positioned(
+                      top: 130,
+                      left: 40,
+                      child: Text(
+                        "1. Union of Concerned Scientists \n2. Natural Resources Defense Council \n3. Environmental Working Group\n4. Greenpeace Fund\n5. Friends of the Earth",
+                        style: TextStyle(
+                            fontFamily: 'RadioSpaceBold', fontSize: 18),
+                      )),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
