@@ -18,7 +18,7 @@ yes you can adjust your daily habits to add your
 contribution towards saving the world 
 and become a member of The Planetery Saviours.
 
-![image](https://github.com/RitickSaha/Hack20/blob/master/screenshots/Screenshot_20200629_162111_com.example.flutterappearth.jpg)
+![image](https://github.com/RitickSaha/Hack20/blob/master/screenshots/SVID-20200629-162052-1.gif)
 
 Features of Application:
 
