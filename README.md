@@ -57,7 +57,7 @@ Features of Application:
    data. moreover you can see the individual contributions of the Planetory Tycoons
    too. just click on the "View detailed Stats" button.
 
-   ![image](https://github.com/RitickSaha/Hack20/blob/master/screenshots/Screenshot_20200629_162155_com.example.flutterappearth.jpg)
+   ![image](https://github.com/RitickSaha/Hack20/blob/master/screenshots/SVID-20200629-162136-1.gif)
 
 At last we want to say that to become a hero, you don't need to wear a cap. Just 
 keep calm and before doing some harm to the environment, just think once that is 
